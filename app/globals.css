@@ -12,7 +12,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--text);
+  --color-accent: var(--accent);
   --color-border: var(--border);
+  --color-primary: var(--text);
+  --color-secondary: var(--secondary-text);
   --font-geneva: 'Geneva', Helvetica, sans-serif;
 }
 
@@ -27,7 +30,24 @@
 }
 
 @layer utilities {
+  .icon-active,
+  .icon-inactive {
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    transition: background-color 200ms;
+  }
 
+  .icon-active {
+    @apply bg-background;
+  }
+
+  .icon-inactive {
+    @apply bg-secondary;
+  }
 }
 
 body {
