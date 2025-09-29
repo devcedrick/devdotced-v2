@@ -48,6 +48,10 @@
   .icon-inactive {
     @apply bg-secondary;
   }
+
+  .tags {
+    @apply px-2 py-1 rounded-full text-xs bg-border text-primary;
+  }
 }
 
 body {
