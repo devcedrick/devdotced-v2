@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
     <section 
       id="dashboard" 
       data-section="dashboard"
-      className="bg-background min-h-screen w-full text-primary p-6 lg:p-8"
+      className="bg-background h-max w-full text-primary p-6 lg:p-8"
     >
       <div className="max-w-7xl mx-auto">
         {isLoading && <LoadingState />}

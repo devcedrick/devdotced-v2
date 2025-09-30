@@ -1,17 +1,15 @@
 import Dashboard from "@/components/dashboard/Dashboard";
+import Project from "@/components/projects/Project";
+import Certificates from "@/components/certificates/Certificates";
 
 export default function Home() {
   return (
-    <div className="font-geneva flex flex-col items-center justify-items-center min-h-screen w-full gap-16">
+    <div className="font-geneva flex flex-col items-center justify-items-center min-h-screen w-full">
       <Dashboard />
 
-      <section id="projects" className="h-screen bg-green-100 flex items-center justify-center w-full" data-section="projects">
-        <h1 className="text-4xl">Projects Section</h1>
-      </section>
+      <Project />
 
-      <section id="certificates" className="h-screen bg-yellow-100 flex items-center justify-center w-full" data-section="certificates">
-        <h1 className="text-4xl">Certificates Section</h1>
-      </section>
+      <Certificates />
 
       <section id="contact" className="h-screen bg-red-100 flex items-center justify-center w-full" data-section="contact">
         <h1 className="text-4xl">Contact Section</h1>
