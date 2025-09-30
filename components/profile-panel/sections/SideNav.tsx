@@ -27,9 +27,13 @@ export default function SideNav({ className = "" }: { className?: string }) {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start' 
+      // Get the element's position and add a small offset for better visual alignment
+      const elementPosition = element.offsetTop
+      const offsetPosition = elementPosition - 20 // 20px offset from top
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       })
     }
   }
