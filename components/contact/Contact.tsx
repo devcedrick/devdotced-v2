@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
             </h2>
             
             <p className="text-secondary text-sm leading-relaxed mb-6">
-              I'm currently working on building an amazing contact experience. 
+              I&apos;m currently working on building an amazing contact experience. 
               This section will feature multiple ways to get in touch, including 
               a contact form, social links, and more interactive elements.
             </p>

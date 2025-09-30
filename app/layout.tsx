@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import React from "react";
 import "./globals.css";
 import ProfilePanel from "@/components/profile-panel/ProfilePanel";
-
 export const metadata: Metadata = {
   title: "DevDotCed - v2",
   description: "A portfolio to showcase skills of Ken Cedrick A. Jimeno",
