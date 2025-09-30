@@ -150,4 +150,4 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
   )
 }
 
-export default HeatmapCard
+export default HeatmapCard;
