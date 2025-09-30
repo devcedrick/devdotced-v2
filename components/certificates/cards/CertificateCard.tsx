@@ -1,7 +1,6 @@
 import React from 'react';
 import { Award, Calendar } from 'lucide-react';
 import { Certificate } from '../../../types/certificate';
-import Image from 'next/image';
 
 interface CertificateCardProps {
   certificate: Certificate;
@@ -31,17 +30,21 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
       aria-label={`View ${title} certificate`}
     >
       {/* Certificate Preview Image */}
-      <div className="relative h-48 w-full overflow-hidden bg-border">
-        <Image
+      <div className="relative h-48 w-full overflow-hidden bg-border flex items-center justify-center">
+        <img
           src={image}
           alt={`${title} certificate preview`}
-          fill
-          className="object-cover hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            console.error(`Failed to load image: ${image}`);
+            // Show a fallback instead of hiding
+            e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM3NDE1MSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5Q0EzQUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DZXJ0aWZpY2F0ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
+          }}
+          onLoad={() => console.log(`Successfully loaded: ${image}`)}
         />
         
         {/* Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-black bg-opacity-20 hover:bg-opacity-10 transition-all duration-300" />
+        <div className="absolute inset-0 bg-black/20 hover:bg-black/10 hover:bg-opacity-10 transition-all duration-300" />
         
         {/* Certificate icon overlay */}
         <div className="absolute top-3 right-3 p-2 bg-sidebar rounded-lg shadow-md">
