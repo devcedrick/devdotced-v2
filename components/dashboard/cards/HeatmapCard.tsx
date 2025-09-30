@@ -106,12 +106,13 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
                   return (
                     <rect
                       {...props}
-                      title={`${formatDate}: ${contributionText}`}
                       style={{
                         ...props.style,
                         cursor: 'pointer',
                       }}
-                    />
+                    >
+                      <title>{`${formatDate}: ${contributionText}`}</title>
+                    </rect>
                   );
                 }}
               />
