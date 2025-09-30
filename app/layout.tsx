@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ProfilePanel from "@/components/layout/ProfilePanel";
+import ProfilePanel from "@/components/profile-panel/ProfilePanel";
 
 export const metadata: Metadata = {
   title: "DevDotCed - v2",
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}> 
         <ProfilePanel />
-        <main className="ml-[20vw] min-h-screen overflow-auto border-5 border-white">
+        <main className="ml-[20vw] min-h-screen overflow-auto">
           {children}
         </main>
       </body>

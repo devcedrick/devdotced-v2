@@ -22,6 +22,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #111827;
+    --sidebar: #1F2937;
     --text: #F9FAFB;
     --secondary-text: #9CA3AF;
     --accent: #60A5FA;
@@ -51,6 +52,10 @@
 
   .tags {
     @apply px-2 py-1 rounded-full text-xs bg-border text-primary;
+  }
+
+  .stats-values {
+    @apply font-bold text-lg text-primary;
   }
 }
 
