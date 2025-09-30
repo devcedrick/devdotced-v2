@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 import { X } from 'lucide-react';
 import { Certificate } from '../../../types/certificate';
 
@@ -70,13 +69,10 @@ const CertificateModal: React.FC<CertificateModalProps> = ({
 
           {/* Certificate Image */}
           <div className="relative w-full h-[60vh] min-h-[400px] bg-border rounded-lg overflow-hidden">
-            <Image
+            <img
               src={certificate.image}
               alt={`${certificate.title} certificate`}
-              fill
-              className="object-contain"
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              priority
+              className="w-full h-full object-contain"
             />
           </div>
 

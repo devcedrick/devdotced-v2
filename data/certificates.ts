@@ -1,6 +1,5 @@
 import { Certificate, CertificatesData } from '../types/certificate';
 
-// Certificate data based on the files in public/certificates/
 const certificatesData: Certificate[] = [
   {
     id: 'intro-to-python',
