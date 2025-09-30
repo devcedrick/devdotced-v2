@@ -1,7 +1,7 @@
 import React from 'react'
-import ProfileHeader from '../ui/ProfileHeader'
-import SideNav from '../ui/SideNav'
-import ProfileFooter from '../ui/ProfileFooter'
+import ProfileHeader from './sections/ProfileHeader'
+import SideNav from './sections/SideNav'
+import ProfileFooter from './sections/ProfileFooter'
 
 const ProfilePanel = () => {
   return (
