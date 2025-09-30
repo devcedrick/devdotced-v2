@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Award, Calendar } from 'lucide-react';
 import { Certificate } from '../../../types/certificate';
 
@@ -31,16 +32,13 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
     >
       {/* Certificate Preview Image */}
       <div className="relative h-48 w-full overflow-hidden bg-border flex items-center justify-center">
-        <img
+        <Image
           src={image}
           alt={`${title} certificate preview`}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          onError={(e) => {
-            console.error(`Failed to load image: ${image}`);
-            // Show a fallback instead of hiding
-            e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzM3NDE1MSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5Q0EzQUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5DZXJ0aWZpY2F0ZSBJbWFnZTwvdGV4dD48L3N2Zz4=';
-          }}
-          onLoad={() => console.log(`Successfully loaded: ${image}`)}
+          fill
+          sizes="100vw"
+          onError={() => console.error(`Failed to load image: ${image}`)}
         />
         
         {/* Overlay for better text visibility */}

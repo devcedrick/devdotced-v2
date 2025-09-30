@@ -9,7 +9,6 @@ interface LanguageDistributionCardProps {
 }
 
 const LanguageDistributionCard: React.FC<LanguageDistributionCardProps> = ({ languages }) => {
-  const totalBytes = languages.reduce((sum, lang) => sum + lang.bytes, 0);
   
   return (
     <DashboardCard
