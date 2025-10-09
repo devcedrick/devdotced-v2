@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}> 
         <ProfilePanel />
-        <main className="ml-[20vw] min-h-screen overflow-auto">
+        <main className="lg:ml-72 min-h-screen overflow-auto">
           {children}
         </main>
       </body>
