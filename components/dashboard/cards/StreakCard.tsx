@@ -28,7 +28,7 @@ const StreakCard: React.FC<StreakCardProps> = ({ streak }) => {
             <Flame className="h-5 w-5 text-orange-500" />
             <span className="text-sm text-secondary">Current Streak</span>
           </div>
-          <div className="stats-values">
+          <div className="stats-values text-right flex flex-col justify-end">
             {streak.current}
             <div className="text-xs text-secondary">
               {streak.current > 0 && streak.currentStart && (

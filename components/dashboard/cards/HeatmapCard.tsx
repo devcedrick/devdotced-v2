@@ -90,7 +90,7 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
                   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
                 ]}
-                rectRender={(props: any, data: any) => {
+                rectRender={(props: React.SVGProps<SVGRectElement>, data: { count?: number; date: string }) => {
                   const count = data.count || 0;
                   const contributionText = count === 0 
                     ? 'No contributions' 
@@ -106,12 +106,13 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
                   return (
                     <rect
                       {...props}
-                      title={`${formatDate}: ${contributionText}`}
                       style={{
                         ...props.style,
                         cursor: 'pointer',
                       }}
-                    />
+                    >
+                      <title>{`${formatDate}: ${contributionText}`}</title>
+                    </rect>
                   );
                 }}
               />

@@ -84,3 +84,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-geneva);
 }
+
+@media (max-width: 1024px) {
+  main {
+    margin-left: 0 !important;
+  }
+}
