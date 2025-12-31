@@ -5,7 +5,7 @@ const projectsData: Project[] = [
   {
     id: 'whispr-ph',
     title: 'Whispr',
-    description: 'An anonymous social media platform enabling users to chat with strangers nearby.',
+    description: 'A privacy-focused social media app that uses geolocation to enable anonymous, real-time chat with strangers nearby.',
     year: ' Dec 2025',
     githubUrl: 'https://github.com/devcedrick/jimeno-whispr-web',
     liveUrl: 'https://whispr-ph.vercel.app/',
