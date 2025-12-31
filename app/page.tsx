@@ -1,4 +1,5 @@
 import Dashboard from "@/components/dashboard/Dashboard";
+import Skills from "@/components/skills";
 import Project from "@/components/projects/Project";
 import Certificates from "@/components/certificates/Certificates";
 import Contact from "@/components/contact/Contact";
@@ -12,6 +13,9 @@ export default function Home() {
 
       {/* GITHUB DATA */}
       <Dashboard />
+
+      {/* SKILLS & TOOLS */}
+      <Skills />
 
       {/* LIST OF PROJECTS */}
       <Project />

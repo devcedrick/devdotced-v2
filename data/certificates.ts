@@ -8,7 +8,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/intro-to-python.png',
     dateIssued: '2024',
     category: 'Programming',
-    featured: true
+    featured: false
   },
   {
     id: 'intermediate-python',
@@ -17,7 +17,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/intermediate-python.png',
     dateIssued: '2024',
     category: 'Programming',
-    featured: true
+    featured: false
   },
   {
     id: 'intro-to-sql',
@@ -26,7 +26,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/intro-to-sql.png',
     dateIssued: '2024',
     category: 'Database',
-    featured: true
+    featured: false
   },
   {
     id: 'intermediate-sql',
@@ -35,7 +35,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/intermediate-sql.png',
     dateIssued: '2024',
     category: 'Database',
-    featured: true
+    featured: false
   },
   {
     id: 'intro-to-data-science',
@@ -44,7 +44,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/intro-to-data-science.png',
     dateIssued: '2024',
     category: 'Data Science',
-    featured: true
+    featured: false
   },
   {
     id: 'data-manipulation-with-pandas',
@@ -53,7 +53,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/data-manipulation-with-pandas.png',
     dateIssued: '2024',
     category: 'Data Science',
-    featured: true
+    featured: false
   },
   {
     id: 'intro-to-cybersec',
@@ -62,7 +62,7 @@ const certificatesData: Certificate[] = [
     image: '/certificates/intro-to-cybersec.png',
     dateIssued: '2024',
     category: 'Security',
-    featured: true
+    featured: false
   }
 ];
 

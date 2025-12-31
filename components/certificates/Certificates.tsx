@@ -24,10 +24,6 @@ const Certificates: React.FC = () => {
               <span className='text-secondary text-sm'>Total Certificates</span>
             </div>
             <div className='flex items-center gap-2'>
-              <span className='stats-values'>{certificatesData.categories.length}</span>
-              <span className='text-secondary text-sm'>Categories</span>
-            </div>
-            <div className='flex items-center gap-2'>
               <span className='stats-values'>{certificatesData.featuredCertificates.length}</span>
               <span className='text-secondary text-sm'>Featured</span>
             </div>
