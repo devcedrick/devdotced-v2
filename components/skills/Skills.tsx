@@ -49,9 +49,6 @@ const Skills: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className='flex flex-col gap-2 mb-8'>
           <div className="flex items-center gap-3">
-            <div className="p-1.5 rounded-lg bg-accent/10">
-              <Sparkles className="w-5 h-5 text-accent" />
-            </div>
             <h1 className='text-2xl font-bold'>TECH STACK</h1>
           </div>
           <p className='text-secondary text-sm max-w-2xl'>

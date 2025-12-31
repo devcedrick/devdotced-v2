@@ -6,18 +6,6 @@ export default function ProfileFooter() {
 
   return (
   <footer className="mt-auto flex flex-col items-start gap-6 min-w-0 h-max">
-      <div className="flex flex-col items-start gap-4 border border-border px-5 py-3 rounded-lg w-full">
-        <div className='flex items-center gap-1.5'>
-          <SquareCode className='w-4.5 aspect-square' color='var(--accent)'/>
-          <span className="text-sm text-primary mr-2">Main languages</span>
-        </div>
-        <div className="flex gap-1.5 flex-wrap min-w-0">
-          <span className="tags">TypeScript</span>
-          <span className="tags">Next.js</span>
-          <span className="tags">Node.js</span> 
-        </div>
-      </div>
-
       <div className='flex  justify-between w-full'>
         <div className="flex items-center gap-3 flex-shrink-0">
           <a
