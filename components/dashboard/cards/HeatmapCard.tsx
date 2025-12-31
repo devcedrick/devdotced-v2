@@ -60,23 +60,6 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
               }}
             />
           </div>
-          
-          {/* Custom Legend */}
-          <div className="flex items-center justify-between pt-4 border-t border-border">
-            <div className="flex items-center gap-2 text-xs text-secondary">
-              <span>Less</span>
-              <div className="flex gap-1">
-                {githubTheme.dark?.map((color, index) => (
-                  <div
-                    key={index}
-                    className="w-3 h-3 rounded border border-border/50"
-                    style={{ backgroundColor: color as string }}
-                  />
-                ))}
-              </div>
-              <span>More</span>
-            </div>
-          </div>
         </div>
       ) : (
         <div className="flex items-center justify-center py-12 text-secondary">

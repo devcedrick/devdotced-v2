@@ -21,7 +21,7 @@ const StreakCard: React.FC<StreakCardProps> = ({ currentStreak, longestStreak })
             <span className="text-sm text-secondary">Current Streak</span>
           </div>
           <div className="stats-values text-right">
-            {currentStreak} days
+            {currentStreak} {currentStreak === 1 ? 'day' : 'days'}
           </div>
         </div>
         
@@ -31,7 +31,7 @@ const StreakCard: React.FC<StreakCardProps> = ({ currentStreak, longestStreak })
             <span className="text-sm text-secondary">Best Streak</span>
           </div>
           <div className="stats-values">
-            {longestStreak} days
+            {longestStreak} {longestStreak === 1 ? 'day' : 'days'}
           </div>
         </div>
       </div>

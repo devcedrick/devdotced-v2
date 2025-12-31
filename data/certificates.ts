@@ -40,7 +40,7 @@ const certificatesData: Certificate[] = [
   {
     id: 'intro-to-data-science',
     title: 'Introduction to Data Science',
-    issuer: 'DataCamp',
+    issuer: 'Cisco Networking Academy',
     image: '/certificates/intro-to-data-science.png',
     dateIssued: '2024',
     category: 'Data Science',
@@ -58,7 +58,7 @@ const certificatesData: Certificate[] = [
   {
     id: 'intro-to-cybersec',
     title: 'Introduction to Cybersecurity',
-    issuer: 'DataCamp',
+    issuer: 'Cisco Networking Academy',
     image: '/certificates/intro-to-cybersec.png',
     dateIssued: '2024',
     category: 'Security',
