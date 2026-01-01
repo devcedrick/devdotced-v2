@@ -7,9 +7,11 @@ import { Mail } from "lucide-react";
 import { LayoutDashboard } from "lucide-react";
 import { FolderOpen } from "lucide-react";
 import { Award } from "lucide-react";
+import { Wrench } from "lucide-react";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard className="w-full h-full" />, href: "#dashboard" },
+  { id: "skills", label: "Tech Stack", icon: <Wrench className="w-full h-full" />, href: "#skills" },
   { id: "projects", label: "Projects", icon: <FolderOpen className="w-full h-full" />, href: "#projects" },
   { id: "certificates", label: "Certificates", icon: <Award className="w-full h-full"/>, href: "#certificates" },
   { id: "contact", label: "Contact", icon: <Mail className="w-full h-full"/>, href: "#contact" },
