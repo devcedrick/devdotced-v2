@@ -5,6 +5,7 @@ export interface Certificate {
   image: string;
   dateIssued: string;
   category: string;
+  description?: string;
   featured?: boolean;
 }
 

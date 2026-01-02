@@ -48,7 +48,9 @@ export const useGithubLanguages = (username: string): UseGithubLanguagesResult =
           }
         }`);
 
-        const repos = res.data.user.repositories.nodes;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const repos = (res as any).data.user.repositories.nodes;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const active = repos.filter((r: any) => !r.isArchived && !r.isFork);
 
         const totals: Record<string, number> = {};

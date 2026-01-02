@@ -61,9 +61,11 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
           </p>
         </div>
         
-        <p className="text-secondary text-sm mb-4 leading-relaxed line-clamp-3">
-          {description}
-        </p>
+        {description && (
+          <p className="text-secondary text-sm mb-4 leading-relaxed line-clamp-3">
+            {description}
+          </p>
+        )}
         
         {/* Certificate metadata */}
         <div className="flex justify-between items-center">
