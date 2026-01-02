@@ -1,8 +1,9 @@
 "use client"
 import { Github, Linkedin,  Sun, Moon, SquareCode } from 'lucide-react'
+import { useTheme } from '@/context/ThemeContext';
 
 export default function ProfileFooter() {
-  const theme = 'dark';
+  const { theme, toggleTheme, mounted } = useTheme();
 
   return (
   <footer className="mt-auto flex flex-col items-start gap-6 min-w-0 h-max">
@@ -30,11 +31,12 @@ export default function ProfileFooter() {
         </div>
         <button
           type="button"
-          className="w-8 h-8 inline-flex items-center justify-center rounded-full bg-[var(--border)] text-[var(--text)] hover:bg-[var(--accent)] hover:text-white transition-colors"
-          aria-label="Toggle dark mode"
-          title="Toggle dark mode"
+          onClick={toggleTheme}
+          className="w-8 h-8 inline-flex items-center justify-center rounded-full bg-[var(--border)] text-[var(--text)] hover:bg-[var(--accent)] hover:text-white transition-colors cursor-pointer"
+          aria-label="Toggle theme"
+          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
         >
-          {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          {mounted ? (theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />) : <div className="w-4 h-4" />}
         </button>
       </div>
     </footer>

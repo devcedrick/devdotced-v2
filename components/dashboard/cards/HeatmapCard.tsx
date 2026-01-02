@@ -2,17 +2,20 @@ import React from 'react'
 import { ActivityCalendar, ThemeInput } from 'react-activity-calendar';
 import { Calendar } from 'lucide-react';
 import { DailyContribution } from '@/types/github';
+import { useTheme } from '@/context/ThemeContext';
 
 interface HeatmapCardProps {
   dailyContributions: DailyContribution[];
 }
 
-// GitHub-style theme for the calendar (adjusted to not blend with background)
+// GitHub-style theme for the calendar
 const githubTheme: ThemeInput = {
+  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
   dark: ['#21272e', '#0e4429', '#006d32', '#26a641', '#39d353'],
 };
 
 const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
+  const { theme } = useTheme();
   // Get current year
   const currentYear = 2025;
   
@@ -49,7 +52,7 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
             <ActivityCalendar
               data={activityData}
               theme={githubTheme}
-              colorScheme="dark"
+              colorScheme={theme}
               blockSize={15}
               blockMargin={4}
               blockRadius={4}

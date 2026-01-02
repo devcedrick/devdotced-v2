@@ -3,6 +3,7 @@ import React from "react";
 import "./globals.css";
 import ProfilePanel from "@/components/profile-panel/ProfilePanel";
 import { Toaster } from 'sonner';
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   title: {
@@ -50,13 +51,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}> 
-        <Toaster richColors={true} position='top-right' />
-        <ProfilePanel />
-        <main className="lg:ml-72 min-h-screen overflow-auto">
-          {children}
-        </main>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
+      <body className={`antialiased transition-colors duration-300`}> 
+        <ThemeProvider>
+          <Toaster richColors={true} position='top-right' />
+          <ProfilePanel />
+          <main className="lg:ml-72 min-h-screen overflow-auto bg-background text-primary transition-colors duration-300">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
