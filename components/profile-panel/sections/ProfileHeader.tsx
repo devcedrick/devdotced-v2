@@ -11,6 +11,7 @@ export default function ProfileHeader() {
             src="/images/jimeno-id.png"
             alt="Profile"
             fill
+            priority
             className="rounded-full object-cover"
           />
         </div>

@@ -36,11 +36,11 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
   const totalYearContributions = activityData.reduce((sum, day) => sum + day.count, 0);
 
   return (
-    <div className="bg-sidebar rounded-xl border border-border shadow-lg p-6 w-full mt-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-sidebar rounded-xl border border-border shadow-lg p-4 sm:p-6 w-full mt-8">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
         <div className="flex items-center gap-3">
           <div>
-            <h3 className="text-lg font-semibold text-primary">Contribution Activity</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-primary">Contribution Activity</h3>
             <p className="text-xs text-secondary">{totalYearContributions} contributions in {currentYear}</p>
           </div>
         </div>
@@ -48,20 +48,23 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
 
       {activityData.length > 0 ? (
         <div className="space-y-4">
-          <div className="w-max overflow-x-auto">
-            <ActivityCalendar
-              data={activityData}
-              theme={githubTheme}
-              colorScheme={theme}
-              blockSize={15}
-              blockMargin={4}
-              blockRadius={4}
-              fontSize={12}
-              showWeekdayLabels
-              labels={{
-                totalCount: '{{count}} contributions in {{year}}',
-              }}
-            />
+          <div className="w-full overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="min-w-max">
+              <ActivityCalendar
+                data={activityData}
+                theme={githubTheme}
+                colorScheme={theme}
+                blockSize={12}
+                blockMargin={3}
+                blockRadius={2}
+                fontSize={10}
+                showWeekdayLabels
+                showMonthLabels={true}
+                labels={{
+                  totalCount: '{{count}} contributions in {{year}}',
+                }}
+              />
+            </div>
           </div>
         </div>
       ) : (
