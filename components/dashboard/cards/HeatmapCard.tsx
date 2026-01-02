@@ -1,49 +1,39 @@
 import React from 'react'
-import HeatMap from '@uiw/react-heat-map';
+import { ActivityCalendar, ThemeInput } from 'react-activity-calendar';
 import { Calendar } from 'lucide-react';
-import { DailyContribution } from '../../../hooks/useGithubStats';
+import { DailyContribution } from '@/types/github';
+import { useTheme } from '@/context/ThemeContext';
 
 interface HeatmapCardProps {
   dailyContributions: DailyContribution[];
 }
 
-// Define the heatmap data interface for better type safety
-interface HeatmapValue {
-  date: string;
-  count: number;
-}
+// GitHub-style theme for the calendar
+const githubTheme: ThemeInput = {
+  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+  dark: ['#21272e', '#0e4429', '#006d32', '#26a641', '#39d353'],
+};
 
 const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
-  // Get current year - showing full 2025 year
+  const { theme } = useTheme();
+  // Get current year
   const currentYear = 2025;
   
-  // Filter contributions for 2025 only
-  const currentYearContributions = dailyContributions.filter(contribution => {
-    const contributionDate = new Date(contribution.date);
-    return contributionDate.getFullYear() === currentYear;
-  });
-  
-  // Transform the daily contributions data into the format expected by @uiw/react-heat-map
-  const heatmapData: HeatmapValue[] = currentYearContributions.map(contribution => ({
-    date: contribution.date,
-    count: contribution.contributionCount,
-  }));
+  // Filter contributions for current year and transform to ActivityCalendar format
+  const activityData = dailyContributions
+    .filter(c => new Date(c.date).getFullYear() === currentYear)
+    .map(c => ({
+      date: c.date,
+      count: c.contributionCount,
+      level: c.contributionCount === 0 ? 0 
+           : c.contributionCount <= 3 ? 1 
+           : c.contributionCount <= 6 ? 2 
+           : c.contributionCount <= 9 ? 3 
+           : 4,
+    }));
 
-  // Get the start and end dates for the heatmap (Full 2025 year)
-  const startDate = new Date(currentYear, 0, 1); // January 1, 2025
-  const endDate = new Date(currentYear, 11, 31); // December 31, 2025
-
-  // GitHub-style contribution colors (adjusted for dark theme)
-  const panelColors = {
-    0: '#161b22',    // No contributions
-    1: '#0e4429',    // 1-3 contributions
-    2: '#006d32',    // 4-6 contributions  
-    3: '#26a641',    // 7-9 contributions
-    4: '#39d353',    // 10+ contributions
-  };
-  
   // Calculate total contributions for the year
-  const totalYearContributions = currentYearContributions.reduce((sum, day) => sum + day.contributionCount, 0);
+  const totalYearContributions = activityData.reduce((sum, day) => sum + day.count, 0);
 
   return (
     <div className="bg-sidebar rounded-xl border border-border shadow-lg p-6 w-full mt-8">
@@ -56,86 +46,22 @@ const HeatmapCard: React.FC<HeatmapCardProps> = ({ dailyContributions }) => {
         </div>
       </div>
 
-      {heatmapData.length > 0 ? (
+      {activityData.length > 0 ? (
         <div className="space-y-4">
-          <div className="w-full overflow-x-auto">
-            <div className="min-w-[1000px] w-full">
-              <HeatMap
-                value={heatmapData}
-                width="100%"
-                style={{
-                  color: '#7d8590',
-                  fontSize: '11px',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
-                  width: '100%',
-                }}
-                startDate={startDate}
-                endDate={endDate}
-                panelColors={{
-                  0: '#161b22',
-                  1: '#0e4429', 
-                  2: '#006d32',
-                  3: '#26a641',
-                  4: '#39d353'
-                }}
-                legendCellSize={0}
-                rectSize={15}
-                space={3}
-                rectProps={{
-                  rx: 4,
-                  ry: 4,
-                }}
-                weekLabels={['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']}
-                monthLabels={[
-                  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-                ]}
-                rectRender={(props: React.SVGProps<SVGRectElement>, data: { count?: number; date: string }) => {
-                  const count = data.count || 0;
-                  const contributionText = count === 0 
-                    ? 'No contributions' 
-                    : `${count} contribution${count !== 1 ? 's' : ''}`;
-                  
-                  const formatDate = new Date(data.date).toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  });
-                  
-                  return (
-                    <rect
-                      {...props}
-                      style={{
-                        ...props.style,
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <title>{`${formatDate}: ${contributionText}`}</title>
-                    </rect>
-                  );
-                }}
-              />
-            </div>
-          </div>
-          
-          {/* Custom Legend */}
-          <div className="flex items-center justify-between pt-4 border-t border-border">
-            <div className="flex items-center gap-2 text-xs text-secondary">
-              <span>Less</span>
-              <div className="flex gap-1">
-                {Object.values(panelColors).map((color, index) => (
-                  <div
-                    key={index}
-                    className="w-3 h-3 rounded border border-border/50"
-                    style={{ backgroundColor: color }}
-                    title={`Level ${index}`}
-                  />
-                ))}
-              </div>
-              <span>More</span>
-            </div>
-          
+          <div className="w-max overflow-x-auto">
+            <ActivityCalendar
+              data={activityData}
+              theme={githubTheme}
+              colorScheme={theme}
+              blockSize={15}
+              blockMargin={4}
+              blockRadius={4}
+              fontSize={12}
+              showWeekdayLabels
+              labels={{
+                totalCount: '{{count}} contributions in {{year}}',
+              }}
+            />
           </div>
         </div>
       ) : (

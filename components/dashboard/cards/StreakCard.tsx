@@ -1,21 +1,13 @@
 import React from 'react';
 import { Flame, Trophy } from 'lucide-react';
 import DashboardCard from '../common/DashboardCard';
-import { StreakData } from '../../../hooks/useGithubStats';
 
 interface StreakCardProps {
-  streak: StreakData;
+  currentStreak: number;
+  longestStreak: number;
 }
 
-const StreakCard: React.FC<StreakCardProps> = ({ streak }) => {
-  const formatDate = (dateString?: string) => {
-    if (!dateString) return '';
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric'
-    });
-  };
-
+const StreakCard: React.FC<StreakCardProps> = ({ currentStreak, longestStreak }) => {
   return (
     <DashboardCard
       title="Coding Streak"
@@ -28,13 +20,8 @@ const StreakCard: React.FC<StreakCardProps> = ({ streak }) => {
             <Flame className="h-5 w-5 text-orange-500" />
             <span className="text-sm text-secondary">Current Streak</span>
           </div>
-          <div className="stats-values text-right flex flex-col justify-end">
-            {streak.current}
-            <div className="text-xs text-secondary">
-              {streak.current > 0 && streak.currentStart && (
-                <>Since {formatDate(streak.currentStart)}</>
-              )}
-            </div>
+          <div className="stats-values text-right">
+            {currentStreak} {currentStreak === 1 ? 'day' : 'days'}
           </div>
         </div>
         
@@ -44,7 +31,7 @@ const StreakCard: React.FC<StreakCardProps> = ({ streak }) => {
             <span className="text-sm text-secondary">Best Streak</span>
           </div>
           <div className="stats-values">
-            {streak.longest}
+            {longestStreak} {longestStreak === 1 ? 'day' : 'days'}
           </div>
         </div>
       </div>

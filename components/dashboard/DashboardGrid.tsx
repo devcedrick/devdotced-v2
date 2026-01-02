@@ -10,7 +10,7 @@ interface DashboardGridProps {
 }
 
 const DashboardGrid: React.FC<DashboardGridProps> = ({ stats }) => {
-  const { totalContributions, activeRepositories, streak, languages, dailyContributions } = stats;
+  const { totalContributions, activeRepositories, currentStreak, longestStreak, languages, dailyContributions } = stats;
 
   return (
     <>
@@ -23,7 +23,7 @@ const DashboardGrid: React.FC<DashboardGridProps> = ({ stats }) => {
         </div>
 
         <div className="col-span-1">
-          <StreakCard streak={streak} />
+          <StreakCard currentStreak={currentStreak} longestStreak={longestStreak} />
         </div>
 
         <div className="col-span-1 md:col-span-2 lg:col-span-1">

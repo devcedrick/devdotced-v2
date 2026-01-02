@@ -19,15 +19,13 @@
   --font-geneva: 'Geneva', Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111827;
-    --sidebar: #1F2937;
-    --text: #F9FAFB;
-    --secondary-text: #9CA3AF;
-    --accent: #60A5FA;
-    --border: #374151;
-  }
+.dark {
+  --background: #111827;
+  --sidebar: #1F2937;
+  --text: #F9FAFB;
+  --secondary-text: #9CA3AF;
+  --accent: #60A5FA;
+  --border: #374151;
 }
 
 @layer utilities {
@@ -72,6 +70,20 @@
     line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Marquee Animation */
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+  
+  .animate-scroll:hover {
+    animation-play-state: paused;
   }
 }
 
