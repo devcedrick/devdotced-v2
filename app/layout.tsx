@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import "./globals.css";
 import ProfilePanel from "@/components/profile-panel/ProfilePanel";
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: {
@@ -51,6 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}> 
+        <Toaster richColors={true} position='top-right' />
         <ProfilePanel />
         <main className="lg:ml-72 min-h-screen overflow-auto">
           {children}
